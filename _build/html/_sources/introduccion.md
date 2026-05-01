@@ -49,7 +49,7 @@ Los datos se extraen periódicamente (con una frecuencia esperada de actualizaci
 | `posting_date` | Fecha de publicación del anuncio | Fecha/Hora |
 
 
-## Objetivo General
+## Objetivo general
 
 Diseñar modelos supervisados de regresión y clasificación binaria utilizando técnicas de regresión lineal regularizada (Ridge, Lasso) y regresión logística, integradas en un flujo completo con `Pipeline` y búsqueda de hiperparámetros mediante `GridSearchCV`, con el propósito de:
 
