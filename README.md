@@ -14,7 +14,6 @@ El enfoque incluye un flujo completo de ciencia de datos: desde la adquisición 
 - Cristian Linero
 - David Márquez
 
-
 ## Dataset
 
 - **Fuente:** Kaggle  
