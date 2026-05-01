@@ -1,70 +1,69 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Modelos Ridge, Lasso y LogisticRegression &#8212; cl_jbook_ml202530</title>
+    <title>Miniproyecto: Ridge &amp; Lasso &#8212; Predicción del Precio y Clasificación de Autos Usados</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'miniproject';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Información del Dataset" href="intromini.html" />
+    <link rel="next" title="Conclusiones del Proyecto" href="conclusiones.html" />
+    <link rel="prev" title="Información del Proyecto" href="introduccion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -74,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -108,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
-<a class="navbar-brand logo" href="intromini.html">
+<a class="navbar-brand logo" href="introduccion.html">
+  
   
   
   
@@ -140,27 +155,35 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/uninorte.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/uninorte.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/uninorte.png" class="logo__image only-light" alt="Predicción del Precio y Clasificación de Autos Usados - Home"/>
+    <script>document.write(`<img src="_static/uninorte.png" class="logo__image only-dark" alt="Predicción del Precio y Clasificación de Autos Usados - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intromini.html">
-                    Información del Dataset
+                <a class="reference internal" href="introduccion.html">
+                    Información del Proyecto
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelos Ridge, Lasso y LogisticRegression</a></li>
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Miniproyecto: Ridge &amp; Lasso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusiones.html">Conclusiones del Proyecto</a></li>
 </ul>
 
     </div>
@@ -176,7 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -185,14 +208,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -215,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/cristianclc/Miniproyecto-Ridge-Lasso" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -232,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fminiproject.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/cristianclc/Miniproyecto-Ridge-Lasso/issues/new?title=Issue%20on%20page%20%2Fminiproject.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -314,26 +337,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -344,7 +369,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modelos Ridge, Lasso y LogisticRegression</h1>
+    <h1>Miniproyecto: Ridge & Lasso</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -354,83 +379,50 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modelos Ridge, Lasso y LogisticRegression</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-librerias">Importar Librerías</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lectura-de-datos">Lectura de Datos</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas-variables-numericas">Histogramas variables numéricas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio">Precio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odometer">Odometer</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagramas-de-dispersion-entre-variables-numericas">Diagramas de dispersión entre variables numéricas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odometer-price">Odometer - Price</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorias-mas-frecuentes">Categorías más frecuentes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#region">Region</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state">State</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturer">Manufacturer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition">Condition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cylinders">Cylinders</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fuel">Fuel</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-categoricas-con-respecto-a-precio-promedio">Variables categóricas con respecto a precio promedio</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-region">Precio - Region</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-state">Precio - State</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-year">Precio - Year</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-manufacturer">Precio - Manufacturer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-modelo">Precio - Modelo</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-librerias">Importación de librerías</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-verificacion-y-carga-del-dataset">Descarga, verificación y carga del dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploracion-inicial-de-la-estructura-del-dataset">Exploración inicial de la estructura del dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-outliers-en-variables-numericas">Tratamiento de outliers en variables numéricas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#price">Price</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Odometer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-y-tratamiento-de-outliers-en-la-variable-objetivo-price">Análisis y tratamiento de outliers en la variable objetivo <code class="docutils literal notranslate"><span class="pre">price</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-y-tratamiento-de-outliers-en-la-variable-odometer">Análisis y tratamiento de outliers en la variable <code class="docutils literal notranslate"><span class="pre">odometer</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-nulos">Valores Nulos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-valores-nulos">Análisis de valores nulos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento-de-los-datos">Preprocesamiento de los datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-variables">Eliminación de variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-registros-con-valores-faltantes">Eliminación de registros con valores faltantes</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento">Preprocesamiento</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-variables">Eliminación de Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-observaciones-con-valores-faltantes-na">Eliminación de Observaciones con Valores Faltantes (NA)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-unicos">Valores únicos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-la-variable-binaria-highdemand">Creación de la Variable Binaria “HighDemand”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#piechart-de-la-variable-highdemand">Piechart de la variable HighDemand</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-valores-unicos-por-variable">Análisis de valores únicos por variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-la-variable-binaria-highdemand">Creación de la variable binaria “HighDemand”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separacion-de-caracteristicas-y-variables-objetivo">Separación de características y variables objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion-no-parametrica-para-variables-numericas">Análisis de correlación no Paramétrica para variables numéricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupamiento-de-variables-categoricas-de-alta-cardinalidad">Agrupamiento de variables categóricas de alta cardinalidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preservacion-selectiva-de-modelos-por-frecuencia">Preservación selectiva de modelos por frecuencia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativa-considerada-eliminacion-de-la-variable">Alternativa considerada: Eliminación de la variable</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separacion-de-los-conjutos-x-y-reg-y-clf">Separación de los conjutos X, y_reg, y_clf</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion-no-parametrica-para-variables-numericas-spearman">Análisis de Correlación No Paramétrica para Variables Numéricas (Spearman)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupamiento-de-variables-categoricas-de-alta-cardinalidad">Agrupamiento de Variables Categóricas de Alta Cardinalidad</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preservacion-selectiva-de-modelos-por-frecuencia">Preservación Selectiva de Modelos por Frecuencia</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-relevancia-de-variables-categoricas-prueba-de-kruskal-wallis">Análisis de Relevancia de Variables Categóricas (Prueba de Kruskal-Wallis)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-de-variables-basada-en-relevancia-predictiva-y-manejo-de-categoricas">Selección de Variables Basada en Relevancia Predictiva y Manejo de Categoricas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-de-la-busqueda-de-hiperparametros">Configuración de la Búsqueda de Hiperparámetros</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-conjuntos-de-entrenamiento-y-prueba">Creación de Conjuntos de Entrenamiento y Prueba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-relevancia-de-variables-categoricas">Análisis de relevancia de variables categóricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-de-variables-basada-en-la-relevancia-predictiva">Selección de variables basada en la relevancia predictiva</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-de-la-busqueda-de-hiperparametros-con-gridsearchcv">Configuración de la búsqueda de hiperparámetros con GridSearchCV</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepocesamiento-variables-categoricas-y-numericas">Prepocesamiento variables categóricas y numéricas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejecucion-de-la-busqueda-de-hiperparametros-y-entrenamiento-de-los-modelos">Ejecución de la Búsqueda de Hiperparámetros y Entrenamiento de los Modelos</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-conjuntos-de-entrenamiento-y-prueba">Creación de conjuntos de entrenamiento y prueba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejecucion-de-la-busqueda-de-hiperparametros-y-entrenamiento-de-los-modelos">Ejecución de la búsqueda de hiperparámetros y entrenamiento de los modelos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">Lasso</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica">Regresión Logística</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-los-resultados-de-la-busqueda-de-hiperparametros">Análisis de los Resultados de la Búsqueda de Hiperparámetros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-desempeno-de-los-modelos-de-regresion">Evaluación de desempeño de los modelos de regresión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-del-modelo-ridge">Interpretación del modelo Ridge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-del-modelo-lasso">Interpretación del modelo Lasso</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-desempeno">Evaluación de desempeño</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Ridge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Lasso</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-final-del-modelo-de-clasificacion-en-el-conjunto-de-prueba">Evaluación Final del Modelo de Clasificación en el Conjunto de Prueba</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Regresión logística</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-desempeno-del-modelo-de-clasificacion">Evaluación de desempeño del modelo de clasificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-del-modelo-de-regresion-logistica">Interpretación del modelo de Regresión Logística</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -439,14 +431,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modelos-ridge-lasso-y-logisticregression">
-<h1>Modelos Ridge, Lasso y LogisticRegression<a class="headerlink" href="#modelos-ridge-lasso-y-logisticregression" title="Permalink to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="importar-librerias">
-<h1>Importar Librerías<a class="headerlink" href="#importar-librerias" title="Permalink to this heading">#</a></h1>
-<p>Se importan las librerías esenciales para facilitar el análisis que abarca la carga de datos, la evaluación estadística, la visualización, la transformación de datos, la fusión y la unión.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="miniproyecto-ridge-lasso">
+<h1>Miniproyecto: Ridge &amp; Lasso<a class="headerlink" href="#miniproyecto-ridge-lasso" title="Link to this heading">#</a></h1>
+<section id="importacion-de-librerias">
+<h2>Importación de librerías<a class="headerlink" href="#importacion-de-librerias" title="Link to this heading">#</a></h2>
+<p>Se importan todas las dependencias necesarias para el proyecto: manejo de datos, visualización, pruebas estadísticas, descarga del dataset y todas las herramientas de scikit-learn para preprocesamiento, modelado (Ridge, Lasso, LogisticRegression), validación cruzada con GridSearchCV y métricas de evaluación.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#pip install kagglehub</span>
@@ -456,38 +447,40 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-<span class="kn">import</span> <span class="nn">kagglehub</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kruskal</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">spearmanr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">kagglehub</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">KFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">kruskal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">spearmanr</span>
+
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="lectura-de-datos">
-<h1>Lectura de Datos<a class="headerlink" href="#lectura-de-datos" title="Permalink to this heading">#</a></h1>
-<p>Para la carga inicial del dataset, se utilizó la API de Kaggle Hub mediante Python, permitiendo una descarga automatizada y eficiente de los datos más recientes. El proceso consistió en:</p>
+<section id="descarga-verificacion-y-carga-del-dataset">
+<h2>Descarga, verificación y carga del dataset<a class="headerlink" href="#descarga-verificacion-y-carga-del-dataset" title="Link to this heading">#</a></h2>
+<p>Para la carga inicial del dataset, se utilizó la API de KaggleHub mediante Python, permitiendo una descarga automatizada y eficiente de los datos más recientes. El proceso consistió en:</p>
 <ol class="arabic simple">
-<li><p><strong>Descarga del Dataset</strong>: Se obtuvo la versión actualizada del dataset ‘Craigslist CarsTrucks Data’ directamente desde Kaggle, almacenándose localmente en una ruta específica del sistema.</p></li>
-<li><p><strong>Verificación de Archivos</strong>: Se listaron los archivos descargados para confirmar la presencia del archivo principal (<code class="docutils literal notranslate"><span class="pre">vehicles.csv</span></code>).</p></li>
-<li><p><strong>Carga en DataFrame</strong>: El archivo CSV se leyó utilizando Pandas, asegurando una estructura lista para el análisis posterior.</p></li>
+<li><p><strong>Descarga del dataset</strong>: Se obtuvo la versión actualizada del dataset ‘Craigslist Cars Trucks Data’ directamente desde Kaggle utilizando <code class="docutils literal notranslate"><span class="pre">kagglehub.dataset_download()</span></code>, almacenándose localmente en una ruta específica del sistema.</p></li>
+<li><p><strong>Verificación de archivos</strong>: Se listaron los archivos descargados con <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> para confirmar la presencia del archivo principal (<code class="docutils literal notranslate"><span class="pre">vehicles.csv</span></code>).</p></li>
+<li><p><strong>Carga en DataFrame</strong>: Se construyó la ruta completa al archivo <code class="docutils literal notranslate"><span class="pre">vehicles.csv</span></code> usando <code class="docutils literal notranslate"><span class="pre">os.path.join()</span></code>, y posteriormente se cargó el archivo CSV con <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code>, obteniendo un DataFrame listo para el análisis posterior.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -498,8 +491,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Looks like you&#39;re using an outdated `kagglehub` version (installed: 0.3.12), please consider upgrading to the latest version (0.3.13).
-Path to dataset files: C:\Users\USER\.cache\kagglehub\datasets\austinreese\craigslist-carstrucks-data\versions\10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Looks like you&#39;re using an outdated `kagglehub` version (installed: 0.3.12), please consider upgrading to the latest version (1.0.0).
+Path to dataset files: C:\Users\david\.cache\kagglehub\datasets\austinreese\craigslist-carstrucks-data\versions\10
 </pre></div>
 </div>
 </div>
@@ -527,8 +520,16 @@ Path to dataset files: C:\Users\USER\.cache\kagglehub\datasets\austinreese\craig
 </div>
 </div>
 </div>
-<hr class="docutils" />
-<p>Se emplea el método <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> para evaluar la estructura y calidad inicial del dataset. Este análisis revela información sobre la composición de los datos, incluyendo el número total de registros (filas) y variables (columnas), los tipos de datos asociados a cada campo (como objetos, enteros o valores flotantes), y la cantidad de valores no nulos por columna.</p>
+</section>
+<section id="exploracion-inicial-de-la-estructura-del-dataset">
+<h2>Exploración inicial de la estructura del dataset<a class="headerlink" href="#exploracion-inicial-de-la-estructura-del-dataset" title="Link to this heading">#</a></h2>
+<p>Se emplea el método <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> para evaluar la estructura y calidad inicial del dataset. Este análisis revela información clave sobre la composición de los datos:</p>
+<ul class="simple">
+<li><p><strong>Número total de registros</strong> (filas) y <strong>variables</strong> (columnas)</p></li>
+<li><p><strong>Tipos de datos</strong> asociados a cada campo (<code class="docutils literal notranslate"><span class="pre">object</span></code>, <code class="docutils literal notranslate"><span class="pre">int64</span></code>, <code class="docutils literal notranslate"><span class="pre">float64</span></code>, etc.)</p></li>
+<li><p><strong>Cantidad de valores no nulos</strong> por columna, lo que permite identificar de forma preliminar la presencia de datos faltantes.</p></li>
+</ul>
+<p>Esta exploración es fundamental para orientar las decisiones posteriores de preprocesamiento, como la imputación de valores nulos, eliminación de columnas con excesiva missing data o conversión de tipos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -573,317 +574,48 @@ memory usage: 84.7+ MB
 </div>
 </div>
 </div>
-<p><strong>Interpretación del Dataset</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Volumen y Dimensiones</strong>:</p>
+<p><strong>1. Volumen y dimensiones</strong></p>
 <ul class="simple">
-<li><p>El conjunto de datos contiene 426,880 registros (filas) y 26 variables (columnas), lo que representa un volumen considerable de información sobre vehículos.</p></li>
+<li><p>El conjunto de datos contiene <strong>426,880 registros</strong> (filas) y <strong>26 variables</strong> (columnas), lo que representa un volumen considerable de información sobre vehículos.</p></li>
+</ul>
+<p><strong>2. Tipos de datos</strong></p>
+<ul class="simple">
+<li><p><strong>Variables categóricas</strong>: Predominan 19 columnas de tipo <code class="docutils literal notranslate"><span class="pre">object</span></code>, correspondientes a atributos como <code class="docutils literal notranslate"><span class="pre">manufacturer</span></code>, <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">condition</span></code>, <code class="docutils literal notranslate"><span class="pre">fuel</span></code>, <code class="docutils literal notranslate"><span class="pre">transmission</span></code>, entre otros.</p></li>
+<li><p><strong>Variables numéricas</strong>: Se identifican 5 columnas de tipo <code class="docutils literal notranslate"><span class="pre">float64</span></code> (<code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">odometer</span></code>, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">long</span></code>, <code class="docutils literal notranslate"><span class="pre">county</span></code>) y 2 de tipo <code class="docutils literal notranslate"><span class="pre">int64</span></code> (<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">price</span></code>).</p></li>
+<li><p><strong>Observación importante</strong>: La columna <code class="docutils literal notranslate"><span class="pre">county</span></code> es de tipo <code class="docutils literal notranslate"><span class="pre">float64</span></code> pero presenta <strong>0 valores no nulos</strong>, es decir, está completamente vacía.</p></li>
+<li><p><strong>Fechas</strong>: La columna <code class="docutils literal notranslate"><span class="pre">posting_date</span></code> es de tipo <code class="docutils literal notranslate"><span class="pre">object</span></code> y requerirá conversión a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> para su aprovechamiento en análisis temporales.</p></li>
+</ul>
+<p><strong>3. Valores faltantes</strong></p>
+<ul class="simple">
+<li><p>Múltiples columnas presentan valores nulos en diferente proporción. Por ejemplo:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">condition</span></code> tiene solo 252,776 no nulos (aprox. 59% de datos presentes)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cylinders</span></code> tiene 249,202 no nulos (aprox. 58%)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> tiene solo 120,519 no nulos (aprox. 28%)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">county</span></code> está completamente vacía (0% de datos)</p></li>
 </ul>
 </li>
-<li><p><strong>Tipos de Datos</strong>:</p>
-<ul class="simple">
-<li><p>Predominan variables categóricas/cualitativas (19 columnas tipo object).</p></li>
-<li><p>Variables numéricas incluyen 4 columnas float64 (<code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">odometer</span></code>, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">long</span></code>) y 2 int64 (<code class="docutils literal notranslate"><span class="pre">id</span></code> y <code class="docutils literal notranslate"><span class="pre">price</span></code>). La variable <code class="docutils literal notranslate"><span class="pre">county</span></code> es tomada como float64 pero la columna esta totalmente vacía.</p></li>
-<li><p>La columna <code class="docutils literal notranslate"><span class="pre">posting_date</span></code> está como texto (object), requiriendo conversión a datetime.</p></li>
+<li><p>Esta situación requerirá decisiones estratégicas de imputación o eliminación de columnas/registros durante el preprocesamiento.</p></li>
 </ul>
-</li>
-</ol>
-<p>El dataset presenta un volumen masivo (426,880 registros) con amplia dimensionalidad (26 variables), ofreciendo un amplio potencial para análisis multivariados. Sin embargo, existe un desequilibrio significativo en la composición de datos, con predominio de variables categóricas (19 columnas) sobre numéricas (7 columnas), lo que implica desafíos en el preprocesamiento para modelos predictivos. La combinación de tamaño sustancial y diversidad de variables proporciona una base sólida para análisis exhaustivos, aunque requiere transformaciones intensivas en el manejo de fechas y limpieza de columnas vacías para maximizar su utilidad analítica.</p>
-<section id="histogramas-variables-numericas">
-<h2>Histogramas variables numéricas<a class="headerlink" href="#histogramas-variables-numericas" title="Permalink to this heading">#</a></h2>
-<section id="precio">
-<h3>Precio<a class="headerlink" href="#precio" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Skew:&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">skew</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kurtosis: &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Histograma de price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Valores&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skew: 254.41
-Kurtosis:  69205.09
-</pre></div>
-</div>
-<img alt="_images/217f72750bc5df015d85197dc361305728067dfd51002784a5fff15c46b3459b.png" src="_images/217f72750bc5df015d85197dc361305728067dfd51002784a5fff15c46b3459b.png" />
-</div>
-</div>
-</section>
-<section id="odometer">
-<h3>Odometer<a class="headerlink" href="#odometer" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Skew:&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;odometer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">skew</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kurtosis: &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;odometer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;odometer&#39;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Histograma de odometer&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Valores&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skew: 38.04
-Kurtosis:  1690.76
-</pre></div>
-</div>
-<img alt="_images/b7d8e38e5dfbd4ceb18618e15be495e7a49d911244a8aec7c6a231daf4b95158.png" src="_images/b7d8e38e5dfbd4ceb18618e15be495e7a49d911244a8aec7c6a231daf4b95158.png" />
-</div>
-</div>
-</section>
-</section>
-<section id="diagramas-de-dispersion-entre-variables-numericas">
-<h2>Diagramas de dispersión entre variables numéricas<a class="headerlink" href="#diagramas-de-dispersion-entre-variables-numericas" title="Permalink to this heading">#</a></h2>
-<section id="odometer-price">
-<h3>Odometer - Price<a class="headerlink" href="#odometer-price" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;odometer&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;price&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Diagrama de Dispersión odometer vs price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;odometer&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/9f72dbc049394a185c65afc5208506999b69d6524270a5e281f45f5bcd04c7ec.png" src="_images/9f72dbc049394a185c65afc5208506999b69d6524270a5e281f45f5bcd04c7ec.png" />
-</div>
-</div>
-</section>
-</section>
-<section id="categorias-mas-frecuentes">
-<h2>Categorías más frecuentes<a class="headerlink" href="#categorias-mas-frecuentes" title="Permalink to this heading">#</a></h2>
-<section id="region">
-<h3>Region<a class="headerlink" href="#region" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 15 Car Regions&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Region&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/c931a3a66cd762d2b52cdd05cfa6f538ec9a5794419d0d9843dc0840749d7d08.png" src="_images/c931a3a66cd762d2b52cdd05cfa6f538ec9a5794419d0d9843dc0840749d7d08.png" />
-</div>
-</div>
-</section>
-<section id="state">
-<h3>State<a class="headerlink" href="#state" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 15 Car States&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;State&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/cb1abfee6b43a9163d0dcd6c506053d635a0cae934baa3d25dcc4a45cd926d01.png" src="_images/cb1abfee6b43a9163d0dcd6c506053d635a0cae934baa3d25dcc4a45cd926d01.png" />
-</div>
-</div>
-</section>
-<section id="manufacturer">
-<h3>Manufacturer<a class="headerlink" href="#manufacturer" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 15 Car Manufacturers&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Manufacturer&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/419233a4ef3d238c3751b139ef1767018bcbe2b3a287511dafcc0c7b76e67bf6.png" src="_images/419233a4ef3d238c3751b139ef1767018bcbe2b3a287511dafcc0c7b76e67bf6.png" />
-</div>
-</div>
-</section>
-<section id="model">
-<h3>Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 15 Car Models&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Model&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/63e702929070bcbcb798cdd9a0a1d3376358e23a41e2b612921d2973019984ca.png" src="_images/63e702929070bcbcb798cdd9a0a1d3376358e23a41e2b612921d2973019984ca.png" />
-</div>
-</div>
-</section>
-<section id="condition">
-<h3>Condition<a class="headerlink" href="#condition" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;condition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Car Condition Distribution&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Condition&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/9d047d4359fa737ed195c4df1778cd3f4442b04b5881be101c1bf65187a4d06f.png" src="_images/9d047d4359fa737ed195c4df1778cd3f4442b04b5881be101c1bf65187a4d06f.png" />
-</div>
-</div>
-</section>
-<section id="cylinders">
-<h3>Cylinders<a class="headerlink" href="#cylinders" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;cylinders&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Car Cylinders Distribution&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cylinders&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/4da4924575249161ed51bfbe5f9d4005f33136c95baadb2536914d2a008e7f9c.png" src="_images/4da4924575249161ed51bfbe5f9d4005f33136c95baadb2536914d2a008e7f9c.png" />
-</div>
-</div>
-</section>
-<section id="fuel">
-<h3>Fuel<a class="headerlink" href="#fuel" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fuel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Car Fuel Distribution&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fuel&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/0cdf4a67762a1d02b6af557df6f4133b81bf3e1612ab41cb3ed8872c7eceb2af.png" src="_images/0cdf4a67762a1d02b6af557df6f4133b81bf3e1612ab41cb3ed8872c7eceb2af.png" />
-</div>
-</div>
-</section>
-</section>
-<section id="variables-categoricas-con-respecto-a-precio-promedio">
-<h2>Variables categóricas con respecto a precio promedio<a class="headerlink" href="#variables-categoricas-con-respecto-a-precio-promedio" title="Permalink to this heading">#</a></h2>
-<section id="precio-region">
-<h3>Precio - Region<a class="headerlink" href="#precio-region" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">region_price</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;region&#39;</span><span class="p">)[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">region_price</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 10 Regions by Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/5caeb2182b616c436c575222029e7522913729b9528dcdd02fb54ca6499cc050.png" src="_images/5caeb2182b616c436c575222029e7522913729b9528dcdd02fb54ca6499cc050.png" />
-</div>
-</div>
-</section>
-<section id="precio-state">
-<h3>Precio - State<a class="headerlink" href="#precio-state" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_price</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">)[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">state_price</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 10 States by Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/430ff6a459edc9f704b17db4b39963354471bab401a6f39c78c1dc48fe224b8d.png" src="_images/430ff6a459edc9f704b17db4b39963354471bab401a6f39c78c1dc48fe224b8d.png" />
-</div>
-</div>
-</section>
-<section id="precio-year">
-<h3>Precio - Year<a class="headerlink" href="#precio-year" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year_price</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">year_price</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 10 Years by Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/1f62a9954b9cbbe7fbda041e1c20c6f147eafff1acf5511c49cdd3b022381b71.png" src="_images/1f62a9954b9cbbe7fbda041e1c20c6f147eafff1acf5511c49cdd3b022381b71.png" />
-</div>
-</div>
-</section>
-<section id="precio-manufacturer">
-<h3>Precio - Manufacturer<a class="headerlink" href="#precio-manufacturer" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">manufacturer_price</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">)[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">manufacturer_price</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 10 Manufacturers by Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/335466dc9b03a1741daf060170645e3b9c87b16c6a27179eeb30ed51bc6e252a.png" src="_images/335466dc9b03a1741daf060170645e3b9c87b16c6a27179eeb30ed51bc6e252a.png" />
-</div>
-</div>
-</section>
-<section id="precio-modelo">
-<h3>Precio - Modelo<a class="headerlink" href="#precio-modelo" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_price</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;model&#39;</span><span class="p">)[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">model_price</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 10 Models by Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Price&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/2ecb4077a8ac5edc3218512dc72d5ddfa5c76399751dc358f57ac87c2c2326f8.png" src="_images/2ecb4077a8ac5edc3218512dc72d5ddfa5c76399751dc358f57ac87c2c2326f8.png" />
-</div>
-</div>
-</section>
+<p><strong>Conclusión preliminar</strong>: El dataset presenta un gran potencial por su volumen, pero exige un preprocesamiento riguroso para manejar datos faltantes, codificar variables categóricas y eliminar columnas sin información útil.</p>
 </section>
 <section id="tratamiento-de-outliers-en-variables-numericas">
-<h2>Tratamiento de outliers en variables numéricas<a class="headerlink" href="#tratamiento-de-outliers-en-variables-numericas" title="Permalink to this heading">#</a></h2>
-<p>Con el objetivo de mitigar la influencia de valores atípicos extremos en las variables numéricas odometer y year, se aplicará un procedimiento de limpieza basado en percentiles. En particular, se eliminarán aquellas observaciones cuyos valores superen el percentil 99 de cada variable, ya que estos pueden distorsionar los análisis estadísticos posteriores o afectar negativamente el desempeño de los modelos predictivos. Este enfoque permite conservar la mayor parte de la información útil del conjunto de datos, al tiempo que se controla el efecto de outliers que podrían no ser representativos del comportamiento general del mercado.</p>
-<section id="price">
-<h3>Price<a class="headerlink" href="#price" title="Permalink to this heading">#</a></h3>
+<h2>Tratamiento de outliers en variables numéricas<a class="headerlink" href="#tratamiento-de-outliers-en-variables-numericas" title="Link to this heading">#</a></h2>
+<p>Con el objetivo de mitigar la influencia de valores atípicos extremos en las variables numéricas <code class="docutils literal notranslate"><span class="pre">price</span></code> (precio del vehículo) y <code class="docutils literal notranslate"><span class="pre">odometer</span></code> (millas recorridas del vehículo), se aplicará un procedimiento de limpieza basado en percentiles.</p>
+<p><strong>Procedimiento seleccionado:</strong> Se eliminarán aquellas observaciones cuyos valores superen el percentil 99 de cada variable, ya que estos pueden distorsionar los análisis estadísticos posteriores o afectar negativamente el desempeño de los modelos predictivos.</p>
+<p><strong>Justificación:</strong> Este enfoque permite conservar la mayor parte de la información útil del conjunto de datos (reteniendo el 99% de los datos centrales), al tiempo que se controla el efecto de outliers extremos que podrían no ser representativos del comportamiento general del mercado de autos usados.</p>
+<hr class="docutils" />
+<section id="analisis-y-tratamiento-de-outliers-en-la-variable-objetivo-price">
+<h3>Análisis y tratamiento de outliers en la variable objetivo <code class="docutils literal notranslate"><span class="pre">price</span></code><a class="headerlink" href="#analisis-y-tratamiento-de-outliers-en-la-variable-objetivo-price" title="Link to this heading">#</a></h3>
+<p>Antes de proceder con la ingeniería de características y el modelado, es fundamental examinar la distribución de la variable objetivo <code class="docutils literal notranslate"><span class="pre">price</span></code> (precio del vehículo), ya que valores atípicos extremos en esta variable pueden distorsionar significativamente los modelos de regresión.</p>
+<p><strong>Procedimiento:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Estadísticas descriptivas</strong>: Se utiliza <code class="docutils literal notranslate"><span class="pre">df['price'].describe()</span></code> con formato de miles y decimales para observar la distribución del precio (mínimo, máximo, media, mediana, percentiles 25 y 75).</p></li>
+<li><p><strong>Visualización con boxplot</strong>: Se genera un diagrama de caja y bigotes para identificar visualmente la presencia de valores atípicos. Los puntos fuera de los bigotes representan potenciales outliers.</p></li>
+<li><p><strong>Definición del límite superior</strong>: Se calcula el percentil 99 de la variable <code class="docutils literal notranslate"><span class="pre">price</span></code> como umbral de corte.</p></li>
+<li><p><strong>Filtrado</strong>: Se eliminan del DataFrame todas las filas cuyo precio supere el percentil 99, reteniendo así el 99% central de los datos y mitigando el impacto de precios extremadamente altos que podrían no ser representativos del mercado de autos usados.</p></li>
+<li><p><strong>Verificación posterior al filtrado</strong>: Se vuelven a calcular las estadísticas descriptivas y se genera un nuevo boxplot para confirmar la reducción de outliers y evaluar la nueva distribución de la variable objetivo.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
@@ -902,6 +634,20 @@ max      3,736,928,711.00
 Name: price, dtype: object
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Boxplot de Price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/53d9818bb028bed44831bec1cd78ef779699d169008bf1ef62033e4559358002.png" src="_images/53d9818bb028bed44831bec1cd78ef779699d169008bf1ef62033e4559358002.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -951,12 +697,21 @@ Name: price, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a65588d819298760f6dd5cc15b47896bba9bbb602b098e3e5b914303c0d87608.png" src="_images/a65588d819298760f6dd5cc15b47896bba9bbb602b098e3e5b914303c0d87608.png" />
+<img alt="_images/d81b2392bef0c91703b9258b8f56680cff3dbe6b164dbded058c2fbbdd88b7e0.png" src="_images/d81b2392bef0c91703b9258b8f56680cff3dbe6b164dbded058c2fbbdd88b7e0.png" />
 </div>
 </div>
 </section>
-<section id="id1">
-<h3>Odometer<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="analisis-y-tratamiento-de-outliers-en-la-variable-odometer">
+<h3>Análisis y tratamiento de outliers en la variable <code class="docutils literal notranslate"><span class="pre">odometer</span></code><a class="headerlink" href="#analisis-y-tratamiento-de-outliers-en-la-variable-odometer" title="Link to this heading">#</a></h3>
+<p>La variable <code class="docutils literal notranslate"><span class="pre">odometer</span></code> (kilometraje recorrido) es una de las características numéricas más relevantes para predecir el precio de un auto usado, ya que existe una relación inversa esperada entre el kilometraje y el valor del vehículo. Valores atípicos extremos en esta variable pueden distorsionar los coeficientes estimados por los modelos de regresión y afectar su capacidad de generalización.</p>
+<p><strong>Procedimiento:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Estadísticas descriptivas</strong>: Se utiliza <code class="docutils literal notranslate"><span class="pre">df['odometer'].describe()</span></code> con formato de miles y decimales para observar la distribución del kilometraje (mínimo, máximo, media, mediana, percentiles 25 y 75).</p></li>
+<li><p><strong>Visualización con boxplot</strong>: Se genera un diagrama de caja y bigotes para identificar visualmente la presencia de valores atípicos. Los puntos fuera de los bigotes representan potenciales outliers.</p></li>
+<li><p><strong>Definición del límite superior</strong>: Se calcula el percentil 99 de la variable <code class="docutils literal notranslate"><span class="pre">odometer</span></code> como umbral de corte, reteniendo así el 99% central de los datos.</p></li>
+<li><p><strong>Filtrado</strong>: Se eliminan del DataFrame todas las filas cuyo kilometraje supere el percentil 99, mitigando el impacto de valores extremadamente altos que podrían corresponder a vehículos con uso comercial intensivo o errores de registro.</p></li>
+<li><p><strong>Verificación posterior al filtrado</strong>: Se vuelven a calcular las estadísticas descriptivas y se genera un nuevo boxplot para confirmar la reducción de outliers y evaluar la nueva distribución de la variable <code class="docutils literal notranslate"><span class="pre">odometer</span></code>.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;odometer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
@@ -1027,14 +782,14 @@ Name: odometer, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a591b7daf34323ca30939880eb1e831e1b1de747edd27e4da3d80157b2eca8e2.png" src="_images/a591b7daf34323ca30939880eb1e831e1b1de747edd27e4da3d80157b2eca8e2.png" />
+<img alt="_images/8c1aa9dad60f88e34d03900bd00295ab1dcd4d9e0cd54dc01134c1116e59f4f4.png" src="_images/8c1aa9dad60f88e34d03900bd00295ab1dcd4d9e0cd54dc01134c1116e59f4f4.png" />
 </div>
 </div>
 </section>
 </section>
-<section id="valores-nulos">
-<h2>Valores Nulos<a class="headerlink" href="#valores-nulos" title="Permalink to this heading">#</a></h2>
-<p>Para cuantificar la magnitud de datos ausentes en cada columna, se calculó el porcentaje de valores nulos mediante <code class="docutils literal notranslate"><span class="pre">df.isnull().mean()</span> <span class="pre">*</span> <span class="pre">100</span></code>. Este indicador permite identificar variables críticas que requieren intervención prioritaria en el proceso de limpieza. Además, trabajaremos los valores de 0 en la variable precio como valores faltantes.</p>
+<section id="analisis-de-valores-nulos">
+<h2>Análisis de valores nulos<a class="headerlink" href="#analisis-de-valores-nulos" title="Link to this heading">#</a></h2>
+<p>Se calcula el porcentaje de valores nulos por columna con <code class="docutils literal notranslate"><span class="pre">df.isnull().mean()</span> <span class="pre">*</span> <span class="pre">100</span></code> para cuantificar los datos ausentes y priorizar el tratamiento de variables críticas. Adicionalmente, en la variable <code class="docutils literal notranslate"><span class="pre">price</span></code> se considerarán los valores igual a 0 como faltantes o erróneos, ya que un precio cero no es representativo en el mercado de autos usados.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
@@ -1074,12 +829,12 @@ dtype: float64
 </div>
 </div>
 </div>
-<p><strong>Interpretación de Valores Nulos</strong></p>
 <ol class="arabic simple">
 <li><p><strong>Variables Completas (0% faltantes)</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> y <code class="docutils literal notranslate"><span class="pre">url</span></code> (0%): Son identificadores únicos del sistema. Su completitud del 100% indica que la base de datos mantiene integridad en su estructura fundamental. Esto es crítico para trazar cada registro individualmente.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">region</span></code> y <code class="docutils literal notranslate"><span class="pre">region_url</span></code> (0%): La ubicación geográfica principal está siempre registrada. Esto sugiere que el proceso de recolección valora y exige esta información, probablemente porque es esencial para el negocio o análisis de mercado regional.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code> (0%): La variable objetivo principal está completa. Para un modelo de predicción de precios, esto es excelente. Indica que el precio no es opcional en los listados, lo cual tiene sentido comercialmente.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">state</span></code> (0%): Complementa la información regional, proporcionando contexto geográfico completo.</p></li>
 </ul>
 </li>
@@ -1092,7 +847,6 @@ dtype: float64
 </li>
 <li><p><strong>Variables con Faltantes Moderados (5-30%)</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code> (7.37%): La variable objetivo principal cuenta con un 7.37% de datos faltantes. Optaremos por la remoción de las filas que cuenten con datos faltantes de la variable precio.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">manufacturer</span></code> (4.13%): Aproximadamente en 4 de cada 100 vehículos no se registró la marca.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">model</span></code> (1.24%): Interesantemente, hay más marcas faltantes que modelos.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">title_status</span></code> (1.93%): Esto indica que es información generalmente disponible pero no estrictamente obligatoria.</p></li>
@@ -1116,12 +870,21 @@ dtype: float64
 </ol>
 <p>El análisis revela un dataset con integridad fundamental en variables críticas como precio, ubicación e identificadores, pero con debilidades significativas en atributos descriptivos como condición, cilindrada y características técnicas. La presencia masiva de valores faltantes en variables clave sugiere problemas estructurales en la recolección de datos más que errores aleatorios.</p>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="preprocesamiento">
-<h1>Preprocesamiento<a class="headerlink" href="#preprocesamiento" title="Permalink to this heading">#</a></h1>
-<p>Este proceso incluye la limpieza de datos, que implica identificar y corregir errores e inconsistencias, así como la transformación de los datos para prepararlos para el análisis. Es esencial para garantizar que los datos estén listos para el modelado e interpretación, mejorando la calidad y precisión de los resultados. Para garantizar la calidad y manejabilidad del conjunto de datos, se tomaron las siguientes decisiones de limpieza inicial: eliminación de variables y eliminación de observaciones.</p>
+<section id="preprocesamiento-de-los-datos">
+<h2>Preprocesamiento de los datos<a class="headerlink" href="#preprocesamiento-de-los-datos" title="Link to this heading">#</a></h2>
+<p>El preprocesamiento es una etapa fundamental en cualquier proyecto de aprendizaje automático, ya que implica la limpieza, transformación y preparación de los datos brutos para su uso en modelos predictivos. Un preprocesamiento adecuado permite:</p>
+<ul class="simple">
+<li><p><strong>Mejorar la calidad de los datos</strong>: Identificando y corrigiendo errores, inconsistencias y valores atípicos.</p></li>
+<li><p><strong>Garantizar la compatibilidad con los algoritmos</strong>: Transformando variables categóricas a formato numérico y escalando características.</p></li>
+<li><p><strong>Optimizar el rendimiento de los modelos</strong>: Reduciendo ruido, manejando valores faltantes y evitando sesgos.</p></li>
+</ul>
+<p>Para garantizar la calidad y manejabilidad del conjunto de datos, en esta sección se aplicarán las siguientes acciones de limpieza inicial:</p>
+<ol class="arabic simple">
+<li><p><strong>Eliminación de variables (columnas)</strong>: Se descartarán aquellas columnas que no aportan información relevante para la predicción del precio y la demanda, ya sea por ser completamente vacías, por tener alta cardinalidad sin valor predictivo, o por estar fuera del alcance del análisis.</p></li>
+<li><p><strong>Eliminación de observaciones (filas)</strong>: Se removerán registros con valores críticos faltantes o erróneos que no puedan ser imputados adecuadamente, así como aquellos que contengan outliers extremos ya tratados en pasos anteriores (precio y kilometraje).</p></li>
+</ol>
 <section id="eliminacion-de-variables">
-<h2>Eliminación de Variables<a class="headerlink" href="#eliminacion-de-variables" title="Permalink to this heading">#</a></h2>
+<h3>Eliminación de variables<a class="headerlink" href="#eliminacion-de-variables" title="Link to this heading">#</a></h3>
 <p>Se descartaron las columnas <code class="docutils literal notranslate"><span class="pre">['county',</span> <span class="pre">'id',</span> <span class="pre">'url',</span> <span class="pre">'region_url',</span> <span class="pre">'VIN',</span> <span class="pre">'image_url',</span> <span class="pre">'description',</span> <span class="pre">'long',</span> <span class="pre">'lat',</span> <span class="pre">'posting_date']</span></code> por las siguientes razones:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">region_url</span></code>, <code class="docutils literal notranslate"><span class="pre">image_url</span></code>: Son identificadores o enlaces únicos que no aportan valor predictivo a un modelo de machine learning.</p></li>
@@ -1139,8 +902,8 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="eliminacion-de-observaciones-con-valores-faltantes-na">
-<h2>Eliminación de Observaciones con Valores Faltantes (NA)<a class="headerlink" href="#eliminacion-de-observaciones-con-valores-faltantes-na" title="Permalink to this heading">#</a></h2>
+<section id="eliminacion-de-registros-con-valores-faltantes">
+<h3>Eliminación de registros con valores faltantes<a class="headerlink" href="#eliminacion-de-registros-con-valores-faltantes" title="Link to this heading">#</a></h3>
 <p>Se optó por eliminar todas las filas que contuvieran al menos un valor NA. Esta decisión se basó en dos factores clave:</p>
 <ul class="simple">
 <li><p>El proyecto sugiere un tamaño típico del conjunto de datos final entre 15.000 y 30.000 observaciones. El dataset original, con cientos de miles de entradas, permite esta reducción sin comprometer la capacidad de los modelos para generalizar.</p></li>
@@ -1153,7 +916,6 @@ dtype: float64
 </div>
 </div>
 </div>
-<hr class="docutils" />
 <p>Se verifican los cambios realizados.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1168,9 +930,10 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="valores-unicos">
-<h2>Valores únicos<a class="headerlink" href="#valores-unicos" title="Permalink to this heading">#</a></h2>
-<p>Se calcula el número de valores únicos para cada variable del DataFrame.</p>
+</section>
+<section id="analisis-de-valores-unicos-por-variable">
+<h2>Análisis de valores únicos por variable<a class="headerlink" href="#analisis-de-valores-unicos-por-variable" title="Link to this heading">#</a></h2>
+<p>Tras eliminar las columnas sin valor predictivo, se calcula <code class="docutils literal notranslate"><span class="pre">df.nunique()</span></code> para confirmar que las variables restantes tienen cardinalidad adecuada y planificar su codificación en la siguiente etapa.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
@@ -1199,12 +962,49 @@ dtype: int64
 </div>
 </div>
 </div>
-<p><strong>Interpretación Valores únicos</strong></p>
-<p>El análisis de cardinalidad de las variables categóricas y numéricas revela características fundamentales sobre la estructura y complejidad del dataset, cruciales para el diseño del pipeline de preprocesamiento. Se observa una cardinalidad extremadamente alta en la variable <code class="docutils literal notranslate"><span class="pre">model</span></code> (9,530 valores únicos), lo que presenta un desafío significativo para técnicas de codificación como One-Hot Encoding, ya que generaría una matriz de features excesivamente amplia y dispersa, incrementando la dimensionalidad y el riesgo de sobreajuste. La variable <code class="docutils literal notranslate"><span class="pre">manufacturer</span></code> (41 únicos) y <code class="docutils literal notranslate"><span class="pre">region</span></code> (403 únicos) también muestran una cardinalidad media-alta, manejable pero que requerirá una cuidadosa consideración. Por otro lado, variables como <code class="docutils literal notranslate"><span class="pre">transmission</span></code> (3), <code class="docutils literal notranslate"><span class="pre">fuel</span></code> (5), <code class="docutils literal notranslate"><span class="pre">title_status</span></code> (6), <code class="docutils literal notranslate"><span class="pre">drive</span></code> (3), y <code class="docutils literal notranslate"><span class="pre">condition</span></code> (6) exhiben una baja cardinalidad, lo que las hace ideales para ser codificadas sin mayor complicación. La presencia de 51 valores únicos en <code class="docutils literal notranslate"><span class="pre">state</span></code> confirma su uso como variable categórica geográfica. Para las variables numéricas, el alto número de valores únicos en <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">odometer</span></code>, y <code class="docutils literal notranslate"><span class="pre">price</span></code> es el comportamiento esperado y confirma su naturaleza continua, validando la decisión de escalarlas. Este perfil de cardinalidad sugiere la potencial necesidad de estrategias adicionales para variables como <code class="docutils literal notranslate"><span class="pre">model</span></code>, como agrupar modelos poco frecuentes en una categoría “Other” o utilizar técnicas de encoding alternativas, para garantizar la eficiencia y efectividad de los modelos de machine learning.</p>
+<p>El análisis de valores únicos revela información clave sobre la estructura del dataset, orientando las decisiones de preprocesamiento:</p>
+<p><strong>Variables categóricas:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tipo de cardinalidad</p></th>
+<th class="head"><p>Variables</p></th>
+<th class="head"><p>Valores únicos</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Extrema</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">model</span></code></p></td>
+<td><p>9,530</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Media-alta</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">region</span></code> (403), <code class="docutils literal notranslate"><span class="pre">manufacturer</span></code> (41)</p></td>
+<td><p>400+ / 40+</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Baja</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">transmission</span></code> (3), <code class="docutils literal notranslate"><span class="pre">fuel</span></code> (5), <code class="docutils literal notranslate"><span class="pre">title_status</span></code> (6), <code class="docutils literal notranslate"><span class="pre">drive</span></code> (3), <code class="docutils literal notranslate"><span class="pre">condition</span></code> (6)</p></td>
+<td><p>3-6</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Geográfica</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">state</span></code></p></td>
+<td><p>51</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Variables numéricas:</strong></p>
+<p>Las variables <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">odometer</span></code> y <code class="docutils literal notranslate"><span class="pre">price</span></code> presentan alta cardinalidad (comportamiento esperado por su naturaleza continua), lo que confirma la necesidad de <strong>escalado</strong> (StandardScaler) en lugar de codificación.</p>
 </section>
 <section id="creacion-de-la-variable-binaria-highdemand">
-<h2>Creación de la Variable Binaria “HighDemand”<a class="headerlink" href="#creacion-de-la-variable-binaria-highdemand" title="Permalink to this heading">#</a></h2>
-<p>Para la tarea de clasificación binaria especificada en los objetivos del proyecto, se creó la variable objetivo <code class="docutils literal notranslate"><span class="pre">HighDemand</span></code>.</p>
+<h2>Creación de la variable binaria “HighDemand”<a class="headerlink" href="#creacion-de-la-variable-binaria-highdemand" title="Link to this heading">#</a></h2>
+<p>Para abordar la tarea de clasificación binaria especificada en los objetivos del proyecto (determinar si un vehículo tiene alta o baja demanda), se crea la variable objetivo <code class="docutils literal notranslate"><span class="pre">HighDemand</span></code> a partir de la variable <code class="docutils literal notranslate"><span class="pre">price</span></code>.</p>
+<p><strong>Metodología:</strong><br />
+Se aplica la siguiente regla de binarización:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HighDemand</span> <span class="pre">=</span> <span class="pre">1</span></code> si el precio del vehículo es <strong>mayor</strong> que la mediana de todos los precios del dataset.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HighDemand</span> <span class="pre">=</span> <span class="pre">0</span></code> si el precio es <strong>menor o igual</strong> a la mediana.</p></li>
+</ul>
+<p><strong>Ventaja de este enfoque:</strong><br />
+Utilizar la mediana como umbral garantiza un equilibrio natural entre las dos clases (aproximadamente 50% de registros en cada categoría), lo que evita problemas de desbalanceo de clases en el modelo de clasificación.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;HighDemand&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -1225,40 +1025,15 @@ dtype: int64
 </div>
 </div>
 </div>
-<section id="piechart-de-la-variable-highdemand">
-<h3>Piechart de la variable HighDemand<a class="headerlink" href="#piechart-de-la-variable-highdemand" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value_order</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;HighDemand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;pastel&#39;</span><span class="p">)</span>  
-    
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;HighDemand&#39;</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">value_order</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Conteo de HighDemand&quot;</span><span class="p">)</span>
-    
-
-<span class="k">for</span> <span class="n">container</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">containers</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">label_type</span><span class="o">=</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;HighDemand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value_order</span><span class="p">]</span>  
-<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>  
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de HighDemand&#39;</span><span class="p">)</span>
-    
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/9c2fb657fdae17762f2dec5ffc06204aaa3d4caa3b0507367f4a79d7098a59aa.png" src="_images/9c2fb657fdae17762f2dec5ffc06204aaa3d4caa3b0507367f4a79d7098a59aa.png" />
-</div>
-</div>
 </section>
-</section>
-<section id="separacion-de-los-conjutos-x-y-reg-y-clf">
-<h2>Separación de los conjutos X, y_reg, y_clf<a class="headerlink" href="#separacion-de-los-conjutos-x-y-reg-y-clf" title="Permalink to this heading">#</a></h2>
+<section id="separacion-de-caracteristicas-y-variables-objetivo">
+<h2>Separación de características y variables objetivo<a class="headerlink" href="#separacion-de-caracteristicas-y-variables-objetivo" title="Link to this heading">#</a></h2>
+<p>Una vez completado el preprocesamiento y la ingeniería de características, se procede a definir los conjuntos de datos para las tareas de regresión y clasificación.</p>
+<p><strong>Variables objetivo:</strong></p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">y_reg</span></code> (regresión)</strong>: <code class="docutils literal notranslate"><span class="pre">price</span></code> - precio del vehículo, para la tarea de estimación de precio.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">y_clf</span></code> (clasificación)</strong>: <code class="docutils literal notranslate"><span class="pre">HighDemand</span></code> - demanda alta/baja, para la tarea de clasificación binaria.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">categorical_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
@@ -1274,8 +1049,8 @@ dtype: int64
 </div>
 </div>
 </section>
-<section id="analisis-de-correlacion-no-parametrica-para-variables-numericas-spearman">
-<h2>Análisis de Correlación No Paramétrica para Variables Numéricas (Spearman)<a class="headerlink" href="#analisis-de-correlacion-no-parametrica-para-variables-numericas-spearman" title="Permalink to this heading">#</a></h2>
+<section id="analisis-de-correlacion-no-parametrica-para-variables-numericas">
+<h2>Análisis de correlación no Paramétrica para variables numéricas<a class="headerlink" href="#analisis-de-correlacion-no-parametrica-para-variables-numericas" title="Link to this heading">#</a></h2>
 <p>Tras los resultados obtenidos en los análisis anteriores, se evidenció la necesidad de emplear métodos estadísticos robustos que no dependieran de supuestos restrictivos como la normalidad de los datos o la linealidad perfecta de las relaciones. Para evaluar la asociación entre las variables numéricas predictoras (year, odometer) y la variable objetivo price, se utilizó el coeficiente de correlación de Spearman.</p>
 <p>A diferencia del coeficiente de Pearson, que mide únicamente la relación lineal, el coeficiente de Spearman evalúa relaciones monótonas (ya sean lineales o no lineales, siempre que la tendencia sea constante). Además, al basarse en los rangos de los datos en lugar de sus valores brutos, es mucho menos sensible a outliers, lo que lo hace ideal para analizar variables como el precio, que suelen presentar valores extremos y distribuciones sesgadas.</p>
 <div class="cell docutils container">
@@ -1332,33 +1107,36 @@ dtype: int64
 </div>
 </section>
 <section id="agrupamiento-de-variables-categoricas-de-alta-cardinalidad">
-<h2>Agrupamiento de Variables Categóricas de Alta Cardinalidad<a class="headerlink" href="#agrupamiento-de-variables-categoricas-de-alta-cardinalidad" title="Permalink to this heading">#</a></h2>
+<h2>Agrupamiento de variables categóricas de alta cardinalidad<a class="headerlink" href="#agrupamiento-de-variables-categoricas-de-alta-cardinalidad" title="Link to this heading">#</a></h2>
 <p>En el análisis de datos, las variables categóricas con un gran número de categorías o niveles —conocidas como variables de alta cardinalidad— representan un desafío importante. Estas variables pueden dificultar la construcción de modelos debido al exceso de niveles poco representativos, la presencia de categorías con muy baja frecuencia y el aumento de la dimensionalidad al aplicar técnicas de codificación. Para superar este problema, una estrategia común es el agrupamiento de categorías, que consiste en combinar o reducir los niveles de la variable de manera que se conserven patrones relevantes y se minimice la pérdida de información. Este proceso permite simplificar la estructura de los datos, mejorar la eficiencia de los algoritmos de modelado y, en muchos casos, aumentar la capacidad predictiva de los modelos al evitar el sobreajuste.</p>
+<hr class="docutils" />
 <section id="preservacion-selectiva-de-modelos-por-frecuencia">
-<h3>Preservación Selectiva de Modelos por Frecuencia<a class="headerlink" href="#preservacion-selectiva-de-modelos-por-frecuencia" title="Permalink to this heading">#</a></h3>
-<p>Para abordar el desafío más crítico de cardinalidad en el dataset la variable <code class="docutils literal notranslate"><span class="pre">model</span></code> con 9,530 categorías únicas se implementó una  metodología consistió en mantener los modelos con una frecuencua mayor a 3 observaciones, las demás instanscias serán recategorizadas como <code class="docutils literal notranslate"><span class="pre">&quot;other&quot;</span></code>.</p>
+<h3>Preservación selectiva de modelos por frecuencia<a class="headerlink" href="#preservacion-selectiva-de-modelos-por-frecuencia" title="Link to this heading">#</a></h3>
+<p>Para abordar el desafío más crítico de cardinalidad en el dataset la variable <code class="docutils literal notranslate"><span class="pre">model</span></code> con 9,530 categorías únicas se implementó una  metodología consistió en mantener los modelos con una frecuencua mayor a 5 observaciones, las demás instanscias serán recategorizadas como <code class="docutils literal notranslate"><span class="pre">&quot;other&quot;</span></code>.</p>
 <p><strong>Cardinalidad extrema:</strong> La variable representaba el mayor riesgo de sobreajuste por dimensionalidad, haciendo esencial una reducción drástica pero inteligente.</p>
 <p><strong>Impacto obtenido:</strong> Esta intervención redujo la cardinalidad a un número manejable, transformando una variable inutilizable en una característica viable para el modelado predictivo.</p>
+</section>
 <hr class="docutils" />
-<p><strong>Alternativa Considerada: Eliminación Pura de la Variable</strong></p>
+<section id="alternativa-considerada-eliminacion-de-la-variable">
+<h3>Alternativa considerada: Eliminación de la variable<a class="headerlink" href="#alternativa-considerada-eliminacion-de-la-variable" title="Link to this heading">#</a></h3>
 <p>Se evaluó la opción más conservadora de eliminar completamente la variable del modelo:</p>
 <p><strong>Criterio propuesto:</strong> “Eliminar la variable <code class="docutils literal notranslate"><span class="pre">model</span></code> y confiar en que las demás características (<code class="docutils literal notranslate"><span class="pre">manufacturer</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, etc.) capturen suficiente varianza explicativa.”</p>
 <p><strong>Ventajas de la alternativa:</strong></p>
 <ul class="simple">
-<li><p>Eliminación completa del problema de cardinalidad</p></li>
-<li><p>Simplificación radical del pipeline de preprocesamiento</p></li>
-<li><p>Reducción del riesgo de sobreajuste por variables correlacionadas</p></li>
+<li><p>Eliminación completa del problema de cardinalidad.</p></li>
+<li><p>Simplificación radical del pipeline de preprocesamiento.</p></li>
+<li><p>Reducción del riesgo de sobreajuste por variables correlacionadas.</p></li>
 </ul>
 <p><strong>Limitaciones que motivaron su descarte:</strong></p>
 <ul class="simple">
-<li><p>Pérdida irreversible de información valiosa sobre modelos específicos que afectan significativamente el precio</p></li>
-<li><p>Incapacidad para capturar el efecto de modelos icónicos dentro de una marca</p></li>
-<li><p>Reducción potencial del poder predictivo del modelo</p></li>
+<li><p>Pérdida irreversible de información valiosa sobre modelos específicos que afectan significativamente el precio.</p></li>
+<li><p>Incapacidad para capturar el efecto de modelos icónicos dentro de una marca.</p></li>
+<li><p>Reducción potencial del poder predictivo del modelo.</p></li>
 </ul>
 <p><strong>Decisión final:</strong> Se optó por la estrategia de agrupamiento para transformar una variable problemática en un recurso valioso. Este enfoque demuestra cómo el conocimiento del dominio automotriz (reconocer que la importancia de un modelo depende de su marca) puede informar técnicamente las decisiones de preprocesamiento. La solución implementada representa el balance ideal entre sofisticación técnica y pragmatismo aplicado.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">umbral</span> <span class="o">=</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">umbral</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="n">modelos_a_agrupar</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">umbral</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
@@ -1376,7 +1154,7 @@ dtype: int64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>region            403
 manufacturer       41
-model            3160
+model            2080
 condition           6
 cylinders           8
 fuel                5
@@ -1434,8 +1212,8 @@ Se usa <code class="docutils literal notranslate"><span class="pre">.to_string()
 </div>
 </section>
 </section>
-<section id="analisis-de-relevancia-de-variables-categoricas-prueba-de-kruskal-wallis">
-<h2>Análisis de Relevancia de Variables Categóricas (Prueba de Kruskal-Wallis)<a class="headerlink" href="#analisis-de-relevancia-de-variables-categoricas-prueba-de-kruskal-wallis" title="Permalink to this heading">#</a></h2>
+<section id="analisis-de-relevancia-de-variables-categoricas">
+<h2>Análisis de relevancia de variables categóricas<a class="headerlink" href="#analisis-de-relevancia-de-variables-categoricas" title="Link to this heading">#</a></h2>
 <p>Kruskall-Wallis es la alternativa no paramétrica al ANOVA de una vía. No asume normalidad en los datos y es menos sensible a outliers, ya que trabaja con los rangos de los datos en lugar de sus valores absolutos. Evalúa la hipótesis nula de que las medianas de price son iguales entre todas las categorías de una variable.</p>
 <ul class="simple">
 <li><p>H₀: Las medianas del precio son iguales en todos los grupos.</p></li>
@@ -1468,7 +1246,7 @@ Se usa <code class="docutils literal notranslate"><span class="pre">.to_string()
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                         H        p_value
-model         31970.885775   0.000000e+00
+model         29076.876775   0.000000e+00
 type          13870.815801   0.000000e+00
 drive          9657.959249   0.000000e+00
 condition      8628.766865   0.000000e+00
@@ -1486,8 +1264,8 @@ transmission    654.636701  7.037956e-143
 </div>
 </div>
 </section>
-<section id="seleccion-de-variables-basada-en-relevancia-predictiva-y-manejo-de-categoricas">
-<h2>Selección de Variables Basada en Relevancia Predictiva y Manejo de Categoricas<a class="headerlink" href="#seleccion-de-variables-basada-en-relevancia-predictiva-y-manejo-de-categoricas" title="Permalink to this heading">#</a></h2>
+<section id="seleccion-de-variables-basada-en-la-relevancia-predictiva">
+<h2>Selección de variables basada en la relevancia predictiva<a class="headerlink" href="#seleccion-de-variables-basada-en-la-relevancia-predictiva" title="Link to this heading">#</a></h2>
 <p>Como parte del proceso de optimización del modelo y con el objetivo de maximizar su poder predictivo, se llevó a cabo una evaluación exhaustiva de la contribución individual de cada variable mediante análisis estadístico no paramétrico (prueba de Kruskal-Wallis). Este análisis permitió cuantificar la capacidad de cada característica para discriminar entre los diferentes rangos de precio en el conjunto de datos.</p>
 <p>Contrario a un enfoque de eliminación, el análisis reveló que todas las variables consideradas mostraron un grado de relevancia estadística en la explicación de la variabilidad del precio. Si bien se identificaron diferencias en la magnitud del estadístico H entre variables, cada una aporta información valiosa y única al modelo.</p>
 <div class="cell docutils container">
@@ -1507,22 +1285,44 @@ transmission    654.636701  7.037956e-143
 </div>
 </div>
 </section>
-<section id="configuracion-de-la-busqueda-de-hiperparametros">
-<h2>Configuración de la Búsqueda de Hiperparámetros<a class="headerlink" href="#configuracion-de-la-busqueda-de-hiperparametros" title="Permalink to this heading">#</a></h2>
+<section id="configuracion-de-la-busqueda-de-hiperparametros-con-gridsearchcv">
+<h2>Configuración de la búsqueda de hiperparámetros con GridSearchCV<a class="headerlink" href="#configuracion-de-la-busqueda-de-hiperparametros-con-gridsearchcv" title="Link to this heading">#</a></h2>
 <p>Para optimizar el rendimiento de los modelos de manera eficiente y encontrar el valor óptimo de los hiperparámetros de regularización, se utilizaron los métodos de validación cruzada integrados en scikit-learn: <code class="docutils literal notranslate"><span class="pre">RidgeCV</span></code>, <code class="docutils literal notranslate"><span class="pre">LassoCV</span></code> y <code class="docutils literal notranslate"><span class="pre">LogisticRegressionCV</span></code>. Estos algoritmos realizan una búsqueda automatizada del mejor hiperparámetro mediante validación cruzada integrada, ofreciendo una implementación más optimizada y computacionalmente eficiente que una configuración manual de GridSearchCV.</p>
-<p>Estrategia de Implementación:</p>
+<p><strong>Estrategia de Implementación:</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">RidgeCV</span></code> y <code class="docutils literal notranslate"><span class="pre">LassoCV</span></code>: Realizan una búsqueda sobre un rango predefinido de valores de alpha (fuerza de regularización) mediante validación cruzada, seleccionando automáticamente el valor que minimiza el error cuadrático medio.</p>
 <p><code class="docutils literal notranslate"><span class="pre">LogisticRegressionCV</span></code>: Realiza una búsqueda similar para el parámetro C (inversa de la fuerza de regularización) utilizando validación cruzada estratificada, crucial para mantener la proporción de clases en cada fold en problemas de clasificación.</p>
-<p>Los hiperparámetros a optimizar son:</p>
+<p><strong>Los hiperparámetros a optimizar son:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> para Ridge y Lasso, que controla la fuerza de la regularización.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">C</span></code> para Regresión Logística, que controla la inversa de la fuerza de la regularización.</p></li>
 </ul>
 </section>
+<section id="prepocesamiento-variables-categoricas-y-numericas">
+<h2>Prepocesamiento variables categóricas y numéricas<a class="headerlink" href="#prepocesamiento-variables-categoricas-y-numericas" title="Link to this heading">#</a></h2>
+<p>La configuración del preprocesador especifica dos transformaciones en paralelo:</p>
+<ol class="arabic simple">
+<li><p><strong>Escalado estandarizado</strong> para variables numéricas continuas.</p></li>
+<li><p><strong>Codificación one-hot</strong> con eliminación de la primera categoría para evitar multicolinealidad en las variables categóricas.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_num</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">])</span>
+
+<span class="n">ohe</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">sparse_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X_cat</span> <span class="o">=</span> <span class="n">ohe</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">categorical_cols</span><span class="p">])</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">hstack</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">hstack</span><span class="p">([</span><span class="n">X_num</span><span class="p">,</span> <span class="n">X_cat</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="creacion-de-conjuntos-de-entrenamiento-y-prueba">
-<h2>Creación de Conjuntos de Entrenamiento y Prueba<a class="headerlink" href="#creacion-de-conjuntos-de-entrenamiento-y-prueba" title="Permalink to this heading">#</a></h2>
+<h2>Creación de conjuntos de entrenamiento y prueba<a class="headerlink" href="#creacion-de-conjuntos-de-entrenamiento-y-prueba" title="Link to this heading">#</a></h2>
 <p>Para evaluar de manera rigurosa y justa el desempeño final de los modelos optimizados, es esencial probarlos en datos que no hayan sido vistos durante el proceso de ajuste de hiperparámetros. Por esta razón, se divide el dataset en subconjuntos de entrenamiento y prueba. El conjunto de entrenamiento (<code class="docutils literal notranslate"><span class="pre">X_train</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train</span></code>) se utilizará para reentrenar el mejor modelo encontrado por <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> con todos los datos disponibles de entrenamiento, mientras que el conjunto de prueba (<code class="docutils literal notranslate"><span class="pre">X_test</span></code>, <code class="docutils literal notranslate"><span class="pre">y_test</span></code>) se reservará exclusivamente para la evaluación final, proporcionando una estimación no sesgada del rendimiento del modelo en datos nuevos.</p>
-<p>La división se realiza dos veces de manera independiente:</p>
+<p><strong>La división se realiza dos veces de manera independiente:</strong></p>
 <ol class="arabic simple">
 <li><p>Para la tarea de Regresión: Se divide las features (<code class="docutils literal notranslate"><span class="pre">X</span></code>) y la variable objetivo continua (<code class="docutils literal notranslate"><span class="pre">y_reg</span></code>).</p></li>
 <li><p>Para la tarea de Clasificación: Se divide las features (<code class="docutils literal notranslate"><span class="pre">X</span></code>) y la variable objetivo binaria (<code class="docutils literal notranslate"><span class="pre">y_clf</span></code>), utilizando el parámetro <code class="docutils literal notranslate"><span class="pre">stratify</span></code> para garantizar que la proporción de las clases <code class="docutils literal notranslate"><span class="pre">HighDemand</span></code> se mantenga igual en ambos conjuntos, preservando así el balance original.</p></li>
@@ -1535,70 +1335,26 @@ transmission    654.636701  7.037956e-143
 <span class="p">)</span>
 
 <span class="n">X_train_clf</span><span class="p">,</span> <span class="n">X_test_clf</span><span class="p">,</span> <span class="n">y_train_clf</span><span class="p">,</span> <span class="n">y_test_clf</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y_clf</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_clf</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="prepocesamiento-variables-categoricas-y-numericas">
-<h2>Prepocesamiento variables categóricas y numéricas<a class="headerlink" href="#prepocesamiento-variables-categoricas-y-numericas" title="Permalink to this heading">#</a></h2>
-<p>La configuración del preprocesador especifica dos transformaciones en paralelo:</p>
-<ol class="arabic simple">
-<li><p><strong>Escalado estandarizado</strong> para variables numéricas continuas.</p></li>
-<li><p><strong>Codificación one-hot</strong> con eliminación de la primera categoría para evitar multicolinealidad en las variables categóricas.</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span>
-
-
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-<span class="n">ohe</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="c1">#Conjunto entrenamiento regresión</span>
-<span class="n">X_num</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_reg</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">])</span>
-<span class="n">X_cat</span> <span class="o">=</span> <span class="n">ohe</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_reg</span><span class="p">[</span><span class="n">categorical_cols</span><span class="p">])</span>
-
-<span class="n">X_train_reg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X_num</span><span class="p">,</span> <span class="n">X_cat</span><span class="p">])</span>
-
-<span class="c1">#Conjunto test regresión</span>
-<span class="n">X_num</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_reg</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">])</span>
-<span class="n">X_cat</span> <span class="o">=</span> <span class="n">ohe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_reg</span><span class="p">[</span><span class="n">categorical_cols</span><span class="p">])</span>
-
-<span class="n">X_test_reg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X_num</span><span class="p">,</span> <span class="n">X_cat</span><span class="p">])</span>
-
-<span class="c1">#Conjunto training clasificación</span>
-<span class="n">X_num</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_clf</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">])</span>
-<span class="n">X_cat</span> <span class="o">=</span> <span class="n">ohe</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_clf</span><span class="p">[</span><span class="n">categorical_cols</span><span class="p">])</span>
-
-<span class="n">X_train_clf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X_num</span><span class="p">,</span> <span class="n">X_cat</span><span class="p">])</span>
-
-<span class="c1">#Conjunto test clasificación</span>
-<span class="n">X_num</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_clf</span><span class="p">[</span><span class="n">numeric_cols</span><span class="p">])</span>
-<span class="n">X_cat</span> <span class="o">=</span> <span class="n">ohe</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_clf</span><span class="p">[</span><span class="n">categorical_cols</span><span class="p">])</span>
-
-<span class="n">X_test_clf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">X_num</span><span class="p">,</span> <span class="n">X_cat</span><span class="p">])</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y_clf</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_clf</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="ejecucion-de-la-busqueda-de-hiperparametros-y-entrenamiento-de-los-modelos">
-<h2>Ejecución de la Búsqueda de Hiperparámetros y Entrenamiento de los Modelos<a class="headerlink" href="#ejecucion-de-la-busqueda-de-hiperparametros-y-entrenamiento-de-los-modelos" title="Permalink to this heading">#</a></h2>
+<h2>Ejecución de la búsqueda de hiperparámetros y entrenamiento de los modelos<a class="headerlink" href="#ejecucion-de-la-busqueda-de-hiperparametros-y-entrenamiento-de-los-modelos" title="Link to this heading">#</a></h2>
 <p>Una vez configuradas las estrategias de búsqueda, se procede a ejecutar el entrenamiento de los modelos. Este paso es donde se implementa de manera práctica el flujo completo de machine learning definido teóricamente. El método <code class="docutils literal notranslate"><span class="pre">fit()</span></code> de cada objeto no solo entrena el modelo final con la mejor combinación de hiperparámetros encontrada, sino que realiza de manera automatizada y segura todo el proceso de validación cruzada, preprocesamiento y optimización.</p>
-<p>Los hiperparámetros a optimizar son:</p>
+<p><strong>Los hiperparámetros a optimizar son:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> para Ridge y Lasso, que controla la fuerza de la regularización.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">C</span></code> para Regresión Logística, que controla la inversa de la fuerza de la regularización.</p></li>
 </ul>
 <section id="ridge">
-<h3>Ridge<a class="headerlink" href="#ridge" title="Permalink to this heading">#</a></h3>
+<h3>Ridge<a class="headerlink" href="#ridge" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">RidgeCV</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">RidgeCV</span>
 
 <span class="n">alphas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 <span class="n">ridge_cv</span> <span class="o">=</span> <span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -1620,10 +1376,10 @@ Mejor alpha: 1.0
 </div>
 </section>
 <section id="lasso">
-<h3>Lasso<a class="headerlink" href="#lasso" title="Permalink to this heading">#</a></h3>
+<h3>Lasso<a class="headerlink" href="#lasso" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoCV</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LassoCV</span>
 
 <span class="n">alphas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 <span class="n">lasso_cv</span> <span class="o">=</span> <span class="n">LassoCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="n">alphas</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
@@ -1645,10 +1401,11 @@ Mejor alpha: 0.1
 </div>
 </section>
 <section id="regresion-logistica">
-<h3>Regresión Logística<a class="headerlink" href="#regresion-logistica" title="Permalink to this heading">#</a></h3>
+<h3>Regresión Logística<a class="headerlink" href="#regresion-logistica" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegressionCV</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegressionCV</span>
+
 <span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 
 <span class="n">logreg_cv</span> <span class="o">=</span> <span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">Cs</span><span class="o">=</span><span class="n">C</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">penalty</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s2">&quot;liblinear&quot;</span><span class="p">,</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;roc_auc&quot;</span><span class="p">)</span>
@@ -1670,20 +1427,15 @@ Mejor C: 10.0
 </div>
 </section>
 </section>
-<section id="analisis-de-los-resultados-de-la-busqueda-de-hiperparametros">
-<h2>Análisis de los Resultados de la Búsqueda de Hiperparámetros<a class="headerlink" href="#analisis-de-los-resultados-de-la-busqueda-de-hiperparametros" title="Permalink to this heading">#</a></h2>
-<p>Tras completar el proceso de búsqueda exhaustiva, se extraen y analizan los resultados óptimos para cada modelo. Esta etapa es crucial para identificar la configuración de hiperparámetros que maximiza el rendimiento de cada algoritmo según la métrica de evaluación definida.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="evaluacion-de-desempeno">
-<h1>Evaluación de desempeño<a class="headerlink" href="#evaluacion-de-desempeno" title="Permalink to this heading">#</a></h1>
+<section id="evaluacion-de-desempeno-de-los-modelos-de-regresion">
+<h2>Evaluación de desempeño de los modelos de regresión<a class="headerlink" href="#evaluacion-de-desempeno-de-los-modelos-de-regresion" title="Link to this heading">#</a></h2>
 <p>La evaluación de desempeño es una etapa fundamental en el desarrollo de modelos de machine learning, ya que permite medir qué tan bien se ajusta el modelo a los datos y, sobre todo, qué capacidad tiene para generalizar en situaciones no vistas. A través de métricas específicas (que varían según si se trata de un problema de regresión o de clasificación) es posible identificar fortalezas y debilidades del modelo, así como comparar diferentes enfoques y versiones durante el proceso de experimentación. Además de las métricas numéricas, las visualizaciones como matrices de confusión, curvas ROC o gráficos de predicciones frente a valores reales ofrecen una perspectiva más clara sobre el rendimiento alcanzado. De esta manera, la evaluación del desempeño no solo valida la efectividad del modelo, sino que también orienta la toma de decisiones para su mejora continua.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Gráfica Ridge</span>
 
 <span class="n">y_pred_ridge</span> <span class="o">=</span> <span class="n">ridge_cv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_reg</span><span class="p">)</span>
-
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Evaluación Ridge (Test) ---&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MAE:&quot;</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test_reg</span><span class="p">,</span> <span class="n">y_pred_ridge</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test_reg</span><span class="p">,</span> <span class="n">y_pred_ridge</span><span class="p">)))</span>
@@ -1701,9 +1453,8 @@ Mejor C: 10.0
 
 <span class="c1">#Gráfica Lasso</span>
 
-
 <span class="n">y_pred_lasso</span> <span class="o">=</span> <span class="n">lasso_cv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_reg</span><span class="p">)</span>
-
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Evaluación Lasso (Test) ---&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MAE:&quot;</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test_reg</span><span class="p">,</span> <span class="n">y_pred_lasso</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RMSE:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test_reg</span><span class="p">,</span> <span class="n">y_pred_lasso</span><span class="p">)))</span>
@@ -1722,35 +1473,80 @@ Mejor C: 10.0
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Evaluación Ridge (Test) ---
-MAE: 4203.210797853981
-RMSE: 6275.415055759638
-R²: 0.6910361763033859
+MAE: 4301.581855162892
+RMSE: 6357.316192693701
+R²: 0.6829189078688618
 </pre></div>
 </div>
-<img alt="_images/d654d2edfc891f7fa56efadde994362d3f3112567809c68fc7d7e9f88aaec8dc.png" src="_images/d654d2edfc891f7fa56efadde994362d3f3112567809c68fc7d7e9f88aaec8dc.png" />
+<img alt="_images/866070e176806812e52feb4c4fc8a56964ab3b36cbfc4907dbd4594abfe922e6.png" src="_images/866070e176806812e52feb4c4fc8a56964ab3b36cbfc4907dbd4594abfe922e6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Evaluación Lasso (Test) ---
-MAE: 4205.505657450057
-RMSE: 6289.920031990613
-R²: 0.6896062494676016
+MAE: 4293.697246841768
+RMSE: 6358.30376795713
+R²: 0.6828203864941097
 </pre></div>
 </div>
-<img alt="_images/18b41ea779c0123b2c669d1630c3e814e0b2f11e292e3c6b68b83f7cee1946e0.png" src="_images/18b41ea779c0123b2c669d1630c3e814e0b2f11e292e3c6b68b83f7cee1946e0.png" />
+<img alt="_images/a57fcb2614d8568890e6e0d4af037c8b82d2181dc3986b98c7f966d8821045a9.png" src="_images/a57fcb2614d8568890e6e0d4af037c8b82d2181dc3986b98c7f966d8821045a9.png" />
 </div>
 </div>
-<section id="id2">
-<h2>Ridge<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>El modelo Ridge logra explicar aproximadamente el 69.1% (R² = 0.691) de la variabilidad de la variable objetivo. Esto indica un poder predictivo moderado, donde poco más de la mitad de los cambios en la variable dependiente pueden ser explicados por las variables independientes incluidas en el modelo.</p>
-<p>En términos de error, el modelo comete, en promedio, un error de 4203 (MAE) en sus predicciones. El RMSE, que penaliza más los errores grandes, es de 6275. Esto sugiere que, si bien el error promedio es de alrededor de cinco mil unidades, existen algunas predicciones con errores considerablemente más grandes que elevan esta métrica.</p>
-<p>El gráfico muestra que los puntos comienzan a dispersarse notablemente conforme los valores reales aumentan (especialmente después de las 60000 unidades). Esta dispersión más ancha confirma la existencia de errores de predicción mayores para valores altos. En conclusión el modelo presenta un desempeño aceptable pero con margen de mejora. Es útil para obtener una aproximación general, pero sus predicciones para valores altos, deben ser tomadas con cautela debido a su error considerable.</p>
+<section id="interpretacion-del-modelo-ridge">
+<h3>Interpretación del modelo Ridge<a class="headerlink" href="#interpretacion-del-modelo-ridge" title="Link to this heading">#</a></h3>
+<p><strong>Métricas de desempeño:</strong></p>
+<ul class="simple">
+<li><p><strong>R² = 0.683</strong>: El modelo Ridge explica aproximadamente el 68.3% de la variabilidad del precio de los autos usados. Esto indica un poder predictivo <strong>moderadamente bueno</strong>, considerando la complejidad inherente del mercado de vehículos usados.</p></li>
+<li><p>**MAE = <span class="math notranslate nohighlight">\(4,301**: En promedio, la predicción del modelo se equivoca por unos \)</span>4,300 dólares respecto al precio real. Para el rango de precios típico del dataset (tras eliminar outliers extremos), este error representa aproximadamente un <strong>margen aceptable</strong> para estimaciones iniciales en una plataforma de compra-venta.</p></li>
+<li><p><strong>RMSE = $6,357</strong>: El RMSE es notablemente superior al MAE, lo que indica la presencia de <strong>errores grandes en predicciones de vehículos de alto precio</strong>. El RMSE penaliza cuadráticamente estos errores, revelando que el modelo tiene dificultades en el extremo superior de la distribución de precios.</p></li>
+</ul>
+<p><strong>Análisis del gráfico (valores predichos vs. reales):</strong></p>
+<p>Se observa un patrón de <strong>heterocedasticidad</strong>: la dispersión de los puntos aumenta conforme los precios reales se elevan, especialmente por encima de $60,000. Esto confirma que:</p>
+<ul class="simple">
+<li><p>Para vehículos económicos (precios bajos a medios), el modelo es bastante preciso.</p></li>
+<li><p>Para vehículos de lujo o alta gama, las predicciones son menos fiables, posiblemente porque las variables disponibles no capturan adecuadamente las características que diferencian un auto de alta gama de otro.</p></li>
+</ul>
+<p><strong>Conclusión:</strong> El modelo Ridge tiene un desempeño <strong>aceptable para estimaciones generales</strong>, pero sus predicciones para vehículos de alto precio deben ser tomadas con cautela. Sería recomendable considerar un modelo separado para el segmento premium o incluir características adicionales como equipamiento, marca específica y opciones de lujo.</p>
 </section>
-<section id="id3">
-<h2>Lasso<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<p>Se observa que el desempeño del modelo Lasso es casi idéntico al del modelo Ridge. Explica el 68.9% de la variabilidad de los datos, lo que representa una reducción de 0.2 puntos porcentuales respecto al modelo Ridge.</p>
-<p>Sus métricas de error son prácticamente iguales: un MAE de 4205 vs. 4203 de Ridge y un RMSE de 6289 vs. 6275.</p>
-<p>El gráfico de dispersión para Lasso sería virtualmente indistinguible del de Ridge, mostrando el mismo patrón de dispersión y los mismos problemas para predecir valores altos con precisión. Se puede concluir que el modelo Lasso no ofrece una ventaja real sobre el modelo Ridge para este conjunto de datos en particular. Ambos modelos tienen el mismo poder explicativo y cometen errores de magnitud similar.</p>
+<hr class="docutils" />
+<section id="interpretacion-del-modelo-lasso">
+<h3>Interpretación del modelo Lasso<a class="headerlink" href="#interpretacion-del-modelo-lasso" title="Link to this heading">#</a></h3>
+<p><strong>Comparación con Ridge:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Métrica</p></th>
+<th class="head"><p>Ridge</p></th>
+<th class="head"><p>Lasso</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>R²</p></td>
+<td><p>0.6829</p></td>
+<td><p>0.6828</p></td>
+</tr>
+<tr class="row-odd"><td><p>MAE</p></td>
+<td><p>$4,301</p></td>
+<td><p>$4,294</p></td>
+</tr>
+<tr class="row-even"><td><p>RMSE</p></td>
+<td><p>$6,357</p></td>
+<td><p>$6,358</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Análisis de resultados:</strong></p>
+<p>El modelo Lasso presenta un desempeño <strong>casi idéntico</strong> al de Ridge, con diferencias en las métricas que son prácticamente nulas desde una perspectiva práctica. Esto sugiere que:</p>
+<ol class="arabic simple">
+<li><p><strong>La regularización L1 no está eliminando muchas características</strong>: A diferencia de lo esperado (Lasso tiende a llevar coeficientes a cero), todos los predictores probablemente aportan información relevante, o el valor óptimo de <code class="docutils literal notranslate"><span class="pre">alpha</span></code> encontrado por GridSearch no es lo suficientemente alto como para inducir escasez.</p></li>
+<li><p><strong>El conjunto de características es robusto</strong>: La similitud entre ambos modelos indica que las variables seleccionadas son igualmente útiles sin importar el tipo de regularización aplicada.</p></li>
+<li><p><strong>No hay ventaja práctica de Lasso sobre Ridge</strong> en este dataset: Para este problema específico, ambos regularizadores producen esencialmente el mismo poder predictivo.</p></li>
+</ol>
+<p><strong>Conclusión final (ambos modelos):</strong></p>
+<ul class="simple">
+<li><p><strong>Desempeño general</strong>: Aceptable para un problema del mundo real (R² ≈ 0.68), pero no excelente.</p></li>
+<li><p><strong>Limitación principal</strong>: Dificultad para predecir precios altos (heterocedasticidad).</p></li>
+</ul>
 </section>
-<section id="evaluacion-final-del-modelo-de-clasificacion-en-el-conjunto-de-prueba">
-<h2>Evaluación Final del Modelo de Clasificación en el Conjunto de Prueba<a class="headerlink" href="#evaluacion-final-del-modelo-de-clasificacion-en-el-conjunto-de-prueba" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="evaluacion-de-desempeno-del-modelo-de-clasificacion">
+<h2>Evaluación de desempeño del modelo de clasificación<a class="headerlink" href="#evaluacion-de-desempeno-del-modelo-de-clasificacion" title="Link to this heading">#</a></h2>
 <p>Para completar el análisis del objetivo de clasificación binaria, se evaluó el desempeño del mejor modelo de Regresión Logística identificado mediante <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> en el conjunto de prueba reservado para esta tarea. La evaluación de un modelo de clasificación requiere un análisis más multidimensional que la regresión, ya que es necesario considerar no solo la capacidad de predicción general (accuracy) sino también el equilibrio entre los diferentes tipos de error (falsos positivos y falsos negativos), lo cual es crucial dependiendo del contexto de aplicación.</p>
 <p>El modelo se reentrenó con la totalidad del conjunto de entrenamiento de clasificación (<code class="docutils literal notranslate"><span class="pre">X_train_clf</span></code>, <code class="docutils literal notranslate"><span class="pre">y_train_clf</span></code>) y se generaron tanto predicciones de clase (<code class="docutils literal notranslate"><span class="pre">predict</span></code>) como probabilidades (<code class="docutils literal notranslate"><span class="pre">predict_proba</span></code>) para el conjunto de prueba. El desempeño se evaluó mediante un conjunto exhaustivo de métricas y visualizaciones:</p>
 <ul class="simple">
@@ -1778,7 +1574,7 @@ R²: 0.6896062494676016
 <span class="n">prec</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test_clf</span><span class="p">,</span> <span class="n">y_pred_clf</span><span class="p">)</span>
 <span class="n">rec</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test_clf</span><span class="p">,</span> <span class="n">y_pred_clf</span><span class="p">)</span>
 <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test_clf</span><span class="p">,</span> <span class="n">y_pred_clf</span><span class="p">)</span>
-
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Evaluación Logistic Regression&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">acc</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precision:&quot;</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span>
@@ -1791,10 +1587,9 @@ R²: 0.6896062494676016
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Real&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Matriz de confusión&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test_clf</span><span class="p">,</span> <span class="n">y_pred_proba</span><span class="p">)</span>
 <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;AUC = </span><span class="si">{</span><span class="n">roc_auc</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
@@ -1807,20 +1602,69 @@ R²: 0.6896062494676016
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Evaluación Logistic Regression
-Accuracy: 0.8590734888724535
-Precision: 0.8666574927755607
-Recall: 0.8482154882154882
-F1-score: 0.8573373264361556
+Accuracy: 0.8542997377798696
+Precision: 0.8604332327940774
+Recall: 0.8452525252525253
+F1-score: 0.8527753244106258
 </pre></div>
 </div>
-<img alt="_images/19e72629fb46bc72fe2ee887e63e142d7aee7320ea316842c32d4997e984c87b.png" src="_images/19e72629fb46bc72fe2ee887e63e142d7aee7320ea316842c32d4997e984c87b.png" />
-<img alt="_images/7fbce365d0bca29bee5194741d38669c42788bd6adcd54db17ac673efa933cf8.png" src="_images/7fbce365d0bca29bee5194741d38669c42788bd6adcd54db17ac673efa933cf8.png" />
+<img alt="_images/422f9f5740f6035e9a1c8db5c30a80042ea9aff2d96614e3b57330538c8f1a76.png" src="_images/422f9f5740f6035e9a1c8db5c30a80042ea9aff2d96614e3b57330538c8f1a76.png" />
+<img alt="_images/c54049fea550199f9dd4371f98ad9fb3df6cafd29b3272c8ad8dee3fefcba62f.png" src="_images/c54049fea550199f9dd4371f98ad9fb3df6cafd29b3272c8ad8dee3fefcba62f.png" />
 </div>
 </div>
-<section id="id4">
-<h3>Regresión logística<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
-<p>El modelo de Regresión Logística muestra un desempeño sobresaliente en la clasificación de la demanda, con valores altos y balanceados en precisión, recall y F1-score, además de un AUC de 0.93 que confirma su fuerte capacidad de discriminación.</p>
-<p>En términos prácticos, el modelo es confiable tanto para identificar correctamente la alta demanda como para evitar sobreestimaciones, lo cual lo hace útil en contextos de planificación de recursos o gestión operativa. Los errores (falsos positivos y falsos negativos) existen, pero están en proporciones manejables frente al número total de aciertos.</p>
+<section id="interpretacion-del-modelo-de-regresion-logistica">
+<h3>Interpretación del modelo de Regresión Logística<a class="headerlink" href="#interpretacion-del-modelo-de-regresion-logistica" title="Link to this heading">#</a></h3>
+<p>El modelo de Regresión Logística muestra un <strong>desempeño sobresaliente</strong> en la tarea de clasificación binaria de demanda alta vs. baja, superando ampliamente al modelo de regresión en términos relativos.</p>
+<p><strong>Análisis de métricas:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Métrica</p></th>
+<th class="head"><p>Valor</p></th>
+<th class="head"><p>Interpretación</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Accuracy</strong></p></td>
+<td><p>0.8543 (85.4%)</p></td>
+<td><p>El modelo clasifica correctamente 8 de cada 10 vehículos, lo que indica un alto nivel de acierto global.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Precision</strong></p></td>
+<td><p>0.8604 (86.0%)</p></td>
+<td><p>Cuando el modelo predice “alta demanda”, acierta en el 86% de los casos. Esto implica baja tasa de falsos positivos.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Recall</strong></p></td>
+<td><p>0.8453 (84.5%)</p></td>
+<td><p>El modelo identifica correctamente el 84.5% de los vehículos que realmente tienen alta demanda. La tasa de falsos negativos es baja (15.5%).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>F1-Score</strong></p></td>
+<td><p>0.8528 (85.3%)</p></td>
+<td><p>La media armónica entre precisión y recall es excelente, confirmando que el modelo está <strong>equilibrado</strong> y no sacrifica una métrica en favor de la otra.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>AUC</strong></p></td>
+<td><p>0.93</p></td>
+<td><p>Este valor cercano a 1 (máximo posible) indica una <strong>capacidad de discriminación sobresaliente</strong>. El modelo distingue casi perfectamente entre las dos clases, con muy baja superposición entre las distribuciones de probabilidades predichas para alta y baja demanda.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Interpretación práctica:</strong></p>
+<ul class="simple">
+<li><p><strong>Confiabilidad operativa:</strong> El modelo es confiable tanto para <strong>identificar correctamente vehículos de alta demanda</strong> (precision alta) como para <strong>no dejar pasar oportunidades</strong> (recall alto). Este balance es ideal para aplicaciones de planificación de inventarios o fijación dinámica de precios.</p></li>
+<li><p><strong>Errores controlados:</strong> Los falsos positivos (vehículos clasificados como alta demanda cuando no lo son) representan aproximadamente el 14% de las predicciones positivas. Los falsos negativos (alta demanda no detectada) son cerca del 15.5%. Ambas proporciones son manejables y permiten tomar decisiones informadas con márgenes razonables de incertidumbre.</p></li>
+</ul>
+<p><strong>Fortalezas del modelo:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Excelente poder discriminante</strong> (AUC = 0.93): El modelo separa claramente las dos clases.</p></li>
+<li><p><strong>Métricas balanceadas</strong>: No hay un sesgo pronunciado hacia ninguna clase.</p></li>
+<li><p><strong>Alta exactitud general</strong>: Con &gt;85% de acierto, el modelo supera un clasificador naive que siempre predijera la clase mayoritaria (que tendría ≈50% de acierto dado que la mediana genera clases balanceadas).</p></li>
+</ol>
+<p><strong>Conclusión:</strong></p>
+<p>El modelo de Regresión Logística es <strong>altamente útil</strong> para la tarea de clasificación de demanda en el contexto de plataformas de compra-venta de autos usados. Su AUC de 0.93 indica una capacidad de discriminación sobresaliente, y el balance entre precisión y recall lo hace confiable para aplicaciones operativas como:</p>
+<ul class="simple">
+<li><p>Priorizar la exhibición de vehículos de alta demanda.</p></li>
+<li><p>Recomendar precios competitivos según la demanda esperada.</p></li>
+<li><p>Optimizar recursos de marketing y promoción.</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -1850,25 +1694,30 @@ F1-score: 0.8573373264361556
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intromini.html"
+       href="introduccion.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Información del Dataset</p>
+        <p class="prev-next-title">Información del Proyecto</p>
       </div>
     </a>
-</div></div>
-  
+    <a class="right-next"
+       href="conclusiones.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Conclusiones del Proyecto</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-
                 </footer>
               
             </div>
@@ -1877,89 +1726,57 @@ F1-score: 0.8573373264361556
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modelos Ridge, Lasso y LogisticRegression</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importar-librerias">Importar Librerías</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lectura-de-datos">Lectura de Datos</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogramas-variables-numericas">Histogramas variables numéricas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio">Precio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odometer">Odometer</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagramas-de-dispersion-entre-variables-numericas">Diagramas de dispersión entre variables numéricas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odometer-price">Odometer - Price</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categorias-mas-frecuentes">Categorías más frecuentes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#region">Region</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state">State</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturer">Manufacturer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition">Condition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cylinders">Cylinders</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fuel">Fuel</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-categoricas-con-respecto-a-precio-promedio">Variables categóricas con respecto a precio promedio</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-region">Precio - Region</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-state">Precio - State</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-year">Precio - Year</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-manufacturer">Precio - Manufacturer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precio-modelo">Precio - Modelo</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-librerias">Importación de librerías</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descarga-verificacion-y-carga-del-dataset">Descarga, verificación y carga del dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploracion-inicial-de-la-estructura-del-dataset">Exploración inicial de la estructura del dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tratamiento-de-outliers-en-variables-numericas">Tratamiento de outliers en variables numéricas</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#price">Price</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Odometer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-y-tratamiento-de-outliers-en-la-variable-objetivo-price">Análisis y tratamiento de outliers en la variable objetivo <code class="docutils literal notranslate"><span class="pre">price</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-y-tratamiento-de-outliers-en-la-variable-odometer">Análisis y tratamiento de outliers en la variable <code class="docutils literal notranslate"><span class="pre">odometer</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-nulos">Valores Nulos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-valores-nulos">Análisis de valores nulos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento-de-los-datos">Preprocesamiento de los datos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-variables">Eliminación de variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-registros-con-valores-faltantes">Eliminación de registros con valores faltantes</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocesamiento">Preprocesamiento</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-variables">Eliminación de Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliminacion-de-observaciones-con-valores-faltantes-na">Eliminación de Observaciones con Valores Faltantes (NA)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-unicos">Valores únicos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-la-variable-binaria-highdemand">Creación de la Variable Binaria “HighDemand”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#piechart-de-la-variable-highdemand">Piechart de la variable HighDemand</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-valores-unicos-por-variable">Análisis de valores únicos por variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-la-variable-binaria-highdemand">Creación de la variable binaria “HighDemand”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separacion-de-caracteristicas-y-variables-objetivo">Separación de características y variables objetivo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion-no-parametrica-para-variables-numericas">Análisis de correlación no Paramétrica para variables numéricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupamiento-de-variables-categoricas-de-alta-cardinalidad">Agrupamiento de variables categóricas de alta cardinalidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preservacion-selectiva-de-modelos-por-frecuencia">Preservación selectiva de modelos por frecuencia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternativa-considerada-eliminacion-de-la-variable">Alternativa considerada: Eliminación de la variable</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separacion-de-los-conjutos-x-y-reg-y-clf">Separación de los conjutos X, y_reg, y_clf</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion-no-parametrica-para-variables-numericas-spearman">Análisis de Correlación No Paramétrica para Variables Numéricas (Spearman)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agrupamiento-de-variables-categoricas-de-alta-cardinalidad">Agrupamiento de Variables Categóricas de Alta Cardinalidad</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preservacion-selectiva-de-modelos-por-frecuencia">Preservación Selectiva de Modelos por Frecuencia</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-relevancia-de-variables-categoricas-prueba-de-kruskal-wallis">Análisis de Relevancia de Variables Categóricas (Prueba de Kruskal-Wallis)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-de-variables-basada-en-relevancia-predictiva-y-manejo-de-categoricas">Selección de Variables Basada en Relevancia Predictiva y Manejo de Categoricas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-de-la-busqueda-de-hiperparametros">Configuración de la Búsqueda de Hiperparámetros</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-conjuntos-de-entrenamiento-y-prueba">Creación de Conjuntos de Entrenamiento y Prueba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-relevancia-de-variables-categoricas">Análisis de relevancia de variables categóricas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-de-variables-basada-en-la-relevancia-predictiva">Selección de variables basada en la relevancia predictiva</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuracion-de-la-busqueda-de-hiperparametros-con-gridsearchcv">Configuración de la búsqueda de hiperparámetros con GridSearchCV</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepocesamiento-variables-categoricas-y-numericas">Prepocesamiento variables categóricas y numéricas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejecucion-de-la-busqueda-de-hiperparametros-y-entrenamiento-de-los-modelos">Ejecución de la Búsqueda de Hiperparámetros y Entrenamiento de los Modelos</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creacion-de-conjuntos-de-entrenamiento-y-prueba">Creación de conjuntos de entrenamiento y prueba</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejecucion-de-la-busqueda-de-hiperparametros-y-entrenamiento-de-los-modelos">Ejecución de la búsqueda de hiperparámetros y entrenamiento de los modelos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge">Ridge</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso">Lasso</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regresion-logistica">Regresión Logística</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-los-resultados-de-la-busqueda-de-hiperparametros">Análisis de los Resultados de la Búsqueda de Hiperparámetros</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-desempeno-de-los-modelos-de-regresion">Evaluación de desempeño de los modelos de regresión</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-del-modelo-ridge">Interpretación del modelo Ridge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-del-modelo-lasso">Interpretación del modelo Lasso</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-desempeno">Evaluación de desempeño</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Ridge</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Lasso</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-final-del-modelo-de-clasificacion-en-el-conjunto-de-prueba">Evaluación Final del Modelo de Clasificación en el Conjunto de Prueba</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Regresión logística</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-desempeno-del-modelo-de-clasificacion">Evaluación de desempeño del modelo de clasificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretacion-del-modelo-de-regresion-logistica">Interpretación del modelo de Regresión Logística</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
@@ -1973,16 +1790,17 @@ F1-score: 0.8573373264361556
   <div class="footer-item">
     
 <p class="component-author">
-By Cristian Linero, David Marquez
+By David Marquez & Cristian Linero
 </p>
 
   </div>
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2006,8 +1824,8 @@ By Cristian Linero, David Marquez
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
